@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -43,6 +44,10 @@ class MovieSession(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+    def clean(self):
+        if self.ended_show_time < self.cob_show_time:
+            raise ValidationError("End date must be after start date.")
 
 
 class Ticket(models.Model):

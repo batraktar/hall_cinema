@@ -4,7 +4,7 @@ from app_cinema.api.serializers import MovieSessionSerializers, UserRegistration
 from app_cinema.models import MovieSession, Hall, Film
 
 
-class MovieViewSet(generics.CreateAPIView):
+class MovieCreateSet(generics.CreateAPIView):
     queryset = MovieSession.objects.all()
     serializer_class = MovieSessionSerializers
 
